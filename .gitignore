@@ -46,3 +46,7 @@ app.*.map.json
 /android/app/release
 /lib/injection/injection.config.dart
 /lib/data/api/api_service.g.dart
+
+# freezed generated files
+/lib/**/*.freezed.dart
+/lib/**/*.g.dart
