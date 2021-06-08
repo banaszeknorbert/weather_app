@@ -13,4 +13,9 @@ abstract class ApiService {
       {@Query('lat') required double lat,
       @Query('lon') required double lon,
       @Query('apiKey') required String apiKey});
+
+  @GET('/weather?q={city}&appid={apiKey}')
+  Future<Weather> getWeatherForCityName(
+      {@Query('q') required String city,
+      @Query('apiKey') required String apiKey});
 }

@@ -16,4 +16,8 @@ class WeatherRepositoryImpl extends WeatherRepository {
   Future<Weather> getWeatherForPosition(double lat, double lon) =>
       _apiService.getWeatherForPosition(
           lat: lat, lon: lon, apiKey: EnvironmentConfig.apiKey);
+
+  @override
+  Future<Weather> getWeatherForCityName(String city) => _apiService
+      .getWeatherForCityName(city: city, apiKey: EnvironmentConfig.apiKey);
 }
