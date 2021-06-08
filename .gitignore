@@ -50,3 +50,4 @@ app.*.map.json
 # freezed generated files
 /lib/**/*.freezed.dart
 /lib/**/*.g.dart
+/test/**/*.mocks.dart
