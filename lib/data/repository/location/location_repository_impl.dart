@@ -10,7 +10,21 @@ class LocationRepositoryImpl extends LocationRepository {
   final Location _location;
 
   @override
-  Future<Coords> getCurrentLocation() async {
+  Future<Coords?> getCurrentLocation() async {
+    final hasPermission = await _location.hasPermission();
+    if (hasPermission == PermissionStatus.granted) {
+        return _getLocation();
+    } else {
+      final requestResult = await _location.requestPermission();
+      if (requestResult == PermissionStatus.granted) {
+        return _getLocation();
+      } else {
+        return null;
+      }
+    }
+  }
+
+  Future<Coords> _getLocation() async {
     final locationData = await _location.getLocation();
     final coords = Coords(
         longitude: locationData.longitude!, latitude: locationData.latitude!);
