@@ -10,6 +10,16 @@ import 'package:weather_app/screen/home/home_screen_view.dart';
 import 'package:weather_app/theme/gradients.dart';
 
 class HomeScreen extends StatefulWidget {
+  HomeScreen({HomeCubit? homeCubit})
+      : cubit = homeCubit ??
+            HomeCubit(
+              getIt.get<WeatherRepository>(),
+              getIt.get<LocationRepository>(),
+              getIt.get<CrashRepository>(),
+            );
+
+  final HomeCubit cubit;
+
   static Route build() => MainRoute(HomeScreen());
 
   @override
@@ -17,31 +27,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late HomeCubit _cubit;
-
   @override
   void initState() {
-    _cubit = HomeCubit(
-      getIt.get<WeatherRepository>(),
-      getIt.get<LocationRepository>(),
-      getIt.get<CrashRepository>(),
-    );
-    _cubit.getWeatherData();
+    widget.cubit.getWeatherData();
+    print('Widget cubit state: ${widget.cubit.state}');
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) => BlocBuilder(
-      bloc: _cubit,
+      bloc: widget.cubit,
       builder: (ctx, HomeState state) => state.when(
           initial: () => Container(),
-          loading: () => _HomeViewLoadingWidget(),
+          loading: () => HomeViewLoadingWidget(),
           success: (weather) => HomeScreenView(weather: weather),
-          error: (error) => _HomeViewErrorWidget(error)));
+          error: (error) => HomeViewErrorWidget(error)));
 }
 
-class _HomeViewErrorWidget extends StatelessWidget {
-  const _HomeViewErrorWidget(this.message);
+class HomeViewErrorWidget extends StatelessWidget {
+  const HomeViewErrorWidget(this.message);
 
   final String message;
 
@@ -64,7 +68,7 @@ class _HomeViewErrorWidget extends StatelessWidget {
       ));
 }
 
-class _HomeViewLoadingWidget extends StatelessWidget {
+class HomeViewLoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Container(
