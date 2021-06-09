@@ -8,13 +8,13 @@ part 'api_service.g.dart';
 abstract class ApiService {
   factory ApiService(Dio dio) = _ApiService;
 
-  @GET('/weather?lat={lat}&lon={lon}&appid={apiKey}')
+  @GET('/weather?units=metric')
   Future<Weather> getWeatherForPosition(
       {@Query('lat') required double lat,
       @Query('lon') required double lon,
-      @Query('apiKey') required String apiKey});
+      @Query('appid') required String apiKey});
 
-  @GET('/weather?q={city}&appid={apiKey}')
+  @GET('/weather?unit=metric')
   Future<Weather> getWeatherForCityName(
       {@Query('q') required String city,
       @Query('apiKey') required String apiKey});
