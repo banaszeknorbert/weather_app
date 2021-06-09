@@ -30,7 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     widget.cubit.getWeatherData();
-    print('Widget cubit state: ${widget.cubit.state}');
     super.initState();
   }
 

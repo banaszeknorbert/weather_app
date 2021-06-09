@@ -12,11 +12,13 @@ class LocationRepositoryImpl extends LocationRepository {
   @override
   Future<Coords?> getCurrentLocation() async {
     final hasPermission = await _location.hasPermission();
-    if (hasPermission == PermissionStatus.granted) {
-        return _getLocation();
+    if (hasPermission == PermissionStatus.granted ||
+        hasPermission == PermissionStatus.grantedLimited) {
+      return _getLocation();
     } else {
       final requestResult = await _location.requestPermission();
-      if (requestResult == PermissionStatus.granted) {
+      if (requestResult == PermissionStatus.granted ||
+          requestResult == PermissionStatus.grantedLimited) {
         return _getLocation();
       } else {
         return null;
@@ -26,8 +28,8 @@ class LocationRepositoryImpl extends LocationRepository {
 
   Future<Coords> _getLocation() async {
     final locationData = await _location.getLocation();
-    final coords = Coords(
-        lon: locationData.longitude!, lat: locationData.latitude!);
+    final coords =
+        Coords(lon: locationData.longitude!, lat: locationData.latitude!);
     return coords;
   }
 }
