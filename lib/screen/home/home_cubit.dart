@@ -24,7 +24,7 @@ class HomeCubit extends Cubit<HomeState> {
       Weather weather;
       if (location != null) {
         weather = await _weatherRepository.getWeatherForPosition(
-            location.latitude, location.longitude);
+            location.lat, location.lon);
       } else {
         weather = await _weatherRepository.getWeatherForCityName('Warsaw');
       }

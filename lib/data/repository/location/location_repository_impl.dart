@@ -27,7 +27,7 @@ class LocationRepositoryImpl extends LocationRepository {
   Future<Coords> _getLocation() async {
     final locationData = await _location.getLocation();
     final coords = Coords(
-        longitude: locationData.longitude!, latitude: locationData.latitude!);
+        lon: locationData.longitude!, lat: locationData.latitude!);
     return coords;
   }
 }

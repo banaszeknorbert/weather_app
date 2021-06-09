@@ -21,7 +21,7 @@ void main() {
 
     setUp(() {
       when(_mockWeatherRepository.getWeatherForPosition(
-              coordsMock.latitude, coordsMock.longitude))
+              coordsMock.lat, coordsMock.lon))
           .thenAnswer((_) => Future.value(weatherForLocation));
       when(_mockWeatherRepository.getWeatherForCityName('Warsaw'))
           .thenAnswer((_) async => weatherForCity);
