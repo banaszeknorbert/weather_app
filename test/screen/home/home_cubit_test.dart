@@ -1,14 +1,15 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:weather_app/data/repository/crash/crash_repository.dart';
 import 'package:weather_app/data/repository/location/location_repository.dart';
 import 'package:weather_app/data/repository/weather/weather_repository.dart';
-import 'home_cubit_test.mocks.dart';
 import 'package:weather_app/screen/home/home_cubit.dart';
 
 import '../../mocks/model_mocks.dart';
+import 'home_cubit_test.mocks.dart';
+
 
 @GenerateMocks([WeatherRepository, LocationRepository, CrashRepository])
 void main() {
