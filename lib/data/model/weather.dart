@@ -1,7 +1,9 @@
+// ignore_for_file: invalid_annotation_target
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:weather_app/data/model/coords.dart';
 
 part 'weather.freezed.dart';
+
 part 'weather.g.dart';
 
 @freezed
@@ -19,11 +21,12 @@ class Weather with _$Weather {
 
 @freezed
 class WeatherData with _$WeatherData {
-  const factory WeatherData(
-      {required int id,
-      required String main,
-      required String description,
-      required String icon}) = _WeatherData;
+  const factory WeatherData({
+    required int id,
+    required String main,
+    required String description,
+    required String icon,
+  }) = _WeatherData;
 
   factory WeatherData.fromJson(Map<String, dynamic> data) =>
       _$WeatherDataFromJson(data);

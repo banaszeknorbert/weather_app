@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weather_app/theme/app_colors.dart';
 
-import 'app_colors.dart';
 
 final _baseStyle = GoogleFonts.rubik(color: AppColors.textColor);
 
@@ -11,4 +11,4 @@ final appTheme = ThemeData(
       headline5: _baseStyle.copyWith(fontSize: 24, color: AppColors.white),
       headline4: _baseStyle.copyWith(fontSize: 22, color: AppColors.white),
       headline3: _baseStyle.copyWith(fontSize: 22, color: AppColors.white),
-    ));
+    ),);

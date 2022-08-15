@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
+import 'package:weather_app/data/api/api_service.dart';
+import 'package:weather_app/data/api/dio_factory.dart';
 
-import 'api_service.dart';
-import 'dio_factory.dart';
 
 @injectable
 class ApiServiceFactory {

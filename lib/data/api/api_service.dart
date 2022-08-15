@@ -9,13 +9,15 @@ abstract class ApiService {
   factory ApiService(Dio dio) = _ApiService;
 
   @GET('/weather?units=metric')
-  Future<Weather> getWeatherForPosition(
-      {@Query('lat') required double lat,
-      @Query('lon') required double lon,
-      @Query('appid') required String apiKey});
+  Future<Weather> getWeatherForPosition({
+    @Query('lat') required double lat,
+    @Query('lon') required double lon,
+    @Query('appid') required String apiKey,
+  });
 
   @GET('/weather?unit=metric')
-  Future<Weather> getWeatherForCityName(
-      {@Query('q') required String city,
-      @Query('apiKey') required String apiKey});
+  Future<Weather> getWeatherForCityName({
+    @Query('q') required String city,
+    @Query('apiKey') required String apiKey,
+  });
 }

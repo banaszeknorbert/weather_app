@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 const defaultGradient = LinearGradient(
@@ -16,19 +15,19 @@ const errorGradient = LinearGradient(
 const clearGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [Colors.lightBlueAccent, Colors.lightBlue]);
+    colors: [Colors.lightBlueAccent, Colors.lightBlue],);
 
 const sunnyGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [Colors.yellow, Colors.orange]);
+    colors: [Colors.yellow, Colors.orange],);
 
 const rainyGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [Colors.blue, Colors.indigo]);
+    colors: [Colors.blue, Colors.indigo],);
 
 const cloudyGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [Colors.lightBlueAccent, Colors.blue]);
+    colors: [Colors.lightBlueAccent, Colors.blue],);

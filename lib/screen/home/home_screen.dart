@@ -35,12 +35,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) => BlocBuilder(
-      bloc: widget.cubit,
-      builder: (ctx, HomeState state) => state.when(
+        bloc: widget.cubit,
+        builder: (ctx, HomeState state) => state.when(
           initial: () => Container(),
           loading: () => HomeViewLoadingWidget(),
           success: (weather) => HomeScreenView(weather: weather),
-          error: (error) => HomeViewErrorWidget(error)));
+          error: (error) => HomeViewErrorWidget(error),
+        ),
+      );
 }
 
 class HomeViewErrorWidget extends StatelessWidget {
@@ -50,21 +52,22 @@ class HomeViewErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-          body: Container(
-        alignment: Alignment.center,
-        decoration: const BoxDecoration(gradient: errorGradient),
-        padding: const EdgeInsets.all(60),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'An error occurred\n$message',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline5,
-            ),
-          ],
+        body: Container(
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(gradient: errorGradient),
+          padding: const EdgeInsets.all(60),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'An error occurred\n$message',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline5,
+              ),
+            ],
+          ),
         ),
-      ));
+      );
 }
 
 class HomeViewLoadingWidget extends StatelessWidget {

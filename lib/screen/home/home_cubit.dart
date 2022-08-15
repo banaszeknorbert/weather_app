@@ -9,9 +9,11 @@ part 'home_cubit.freezed.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(
-      this._weatherRepository, this._locationRepository, this._crashRepository,
-      {HomeState? initialState})
-      : super(initialState ?? const HomeState.initial());
+    this._weatherRepository,
+    this._locationRepository,
+    this._crashRepository, {
+    HomeState? initialState,
+  }) : super(initialState ?? const HomeState.initial());
 
   final WeatherRepository _weatherRepository;
   final LocationRepository _locationRepository;
@@ -24,7 +26,9 @@ class HomeCubit extends Cubit<HomeState> {
       Weather weather;
       if (location != null) {
         weather = await _weatherRepository.getWeatherForPosition(
-            location.lat, location.lon);
+          location.lat,
+          location.lon,
+        );
       } else {
         weather = await _weatherRepository.getWeatherForCityName('Warsaw');
       }
