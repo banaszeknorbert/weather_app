@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:weather_app/screen/home/home_screen.dart';
 import 'package:weather_app/theme/gradients.dart';
 
@@ -12,10 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2)).then(
-      (_) => Navigator.of(context).pushAndRemoveUntil(
-        HomeScreen.build(),
-        (route) => false,
-      ),
+      (_) => context.go('/home'),
     );
   }
 

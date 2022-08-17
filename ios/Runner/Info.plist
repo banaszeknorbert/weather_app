@@ -43,5 +43,11 @@
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need this permission to give you weather data for your position</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+    <string>We need this permission to give you weather data for your position</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>We need this permission to give you weather data for your position</string>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 </dict>
 </plist>

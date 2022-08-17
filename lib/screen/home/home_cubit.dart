@@ -34,6 +34,7 @@ class HomeCubit extends Cubit<HomeState> {
       }
       emit(HomeState.success(weather));
     } catch (error, stackTrace) {
+      print('$error, $stackTrace');
       await _crashRepository.reportError(error, stackTrace);
       emit(HomeState.error(error.toString()));
     }
