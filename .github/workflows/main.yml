@@ -57,6 +57,9 @@ jobs:
       - name: Flutter Pub Get
         run: flutter pub get
         
+      - name: Build runner
+        run: sh generate.sh
+        
       - name: Flutter Analyze
         run: flutter analyze
         
