@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:weather_app/config/environment_config.dart';
 import 'package:weather_app/data/api/api_service.dart';
-import 'package:weather_app/data/api/api_service_factory.dart';
 import 'package:weather_app/data/model/weather.dart';
 import 'package:weather_app/data/repository/weather/weather_repository.dart';
 
@@ -9,8 +8,7 @@ import 'package:weather_app/data/repository/weather/weather_repository.dart';
 class WeatherRepositoryImpl extends WeatherRepository {
   final ApiService _apiService;
 
-  WeatherRepositoryImpl(ApiServiceFactory apiServiceFactory)
-      : _apiService = apiServiceFactory.get();
+  WeatherRepositoryImpl(this._apiService);
 
   @override
   Future<Weather> getWeatherForPosition(double lat, double lon) =>

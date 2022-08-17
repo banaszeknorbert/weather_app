@@ -1,11 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 import 'package:weather_app/data/model/weather.dart';
 
 part 'api_service.g.dart';
 
+@singleton
 @RestApi()
 abstract class ApiService {
+  @factoryMethod
   factory ApiService(Dio dio) = _ApiService;
 
   @GET('/onecall')

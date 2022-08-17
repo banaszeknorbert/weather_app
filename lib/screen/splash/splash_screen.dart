@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weather_app/screen/home/home_screen.dart';
 import 'package:weather_app/theme/gradients.dart';
 
 class SplashScreen extends StatefulWidget {

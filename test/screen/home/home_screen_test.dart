@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:weather_app/data/repository/crash/crash_repository.dart';
+import 'package:weather_app/data/repository/location/location_repository.dart';
+import 'package:weather_app/data/repository/weather/weather_repository.dart';
 import 'package:weather_app/screen/home/home_cubit.dart';
 import 'package:weather_app/screen/home/home_screen.dart';
 
 import 'home_cubit_test.mocks.dart';
 
+@GenerateMocks([WeatherRepository, LocationRepository, CrashRepository])
 void main() {
-  final MockWeatherRepository _mockWeatherRepository = MockWeatherRepository();
-  final MockLocationRepository _mockLocationRepository =
+  final MockWeatherRepository mockWeatherRepository = MockWeatherRepository();
+  final MockLocationRepository mockLocationRepository =
       MockLocationRepository();
-  final MockCrashRepository _mockCrashRepository = MockCrashRepository();
+  final MockCrashRepository mockCrashRepository = MockCrashRepository();
 
   testWidgets(
       'Should display HomeViewLoadingWidget when cubit is in loading state',
       (WidgetTester tester) async {
     final loadingCubit = HomeCubit(
-        _mockWeatherRepository, _mockLocationRepository, _mockCrashRepository,
-        initialState: const HomeState.loading());
+      mockWeatherRepository,
+      mockLocationRepository,
+      mockCrashRepository,
+      initialState: const HomeState.loading(),
+    );
     await tester.pumpWidget(
       MaterialApp(
         home: HomeScreen(
@@ -31,8 +39,11 @@ void main() {
   testWidgets('Should display HomeViewErrorWidget when cubit is in error state',
       (WidgetTester tester) async {
     final errorCubit = HomeCubit(
-        _mockWeatherRepository, _mockLocationRepository, _mockCrashRepository,
-        initialState: const HomeState.error('message'));
+      mockWeatherRepository,
+      mockLocationRepository,
+      mockCrashRepository,
+      initialState: const HomeState.error('message'),
+    );
     final widget = MaterialApp(
       home: HomeScreen(
         homeCubit: errorCubit,

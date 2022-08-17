@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:weather_app/data/model/weather.dart';
 import 'package:weather_app/data/repository/crash/crash_repository.dart';
@@ -34,7 +35,7 @@ class HomeCubit extends Cubit<HomeState> {
       }
       emit(HomeState.success(weather));
     } catch (error, stackTrace) {
-      print('$error, $stackTrace');
+      debugPrint('$error, $stackTrace');
       await _crashRepository.reportError(error, stackTrace);
       emit(HomeState.error(error.toString()));
     }
