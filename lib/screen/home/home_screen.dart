@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/app/main_route.dart';
 import 'package:weather_app/data/repository/crash/crash_repository.dart';
 import 'package:weather_app/data/repository/location/location_repository.dart';
 import 'package:weather_app/data/repository/weather/weather_repository.dart';
@@ -19,8 +18,6 @@ class HomeScreen extends StatefulWidget {
             );
 
   final HomeCubit cubit;
-
-  static Route build() => MainRoute(HomeScreen());
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
