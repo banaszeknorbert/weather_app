@@ -58,7 +58,7 @@ jobs:
         run: flutter pub get
         
       - name: Flutter Analyze
-        run: flutter analzye
+        run: flutter analyze
         
       - name: Flutter Tets
         run: flutter test --coverage
