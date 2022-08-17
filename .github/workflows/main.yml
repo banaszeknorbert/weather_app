@@ -1,0 +1,67 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache flutter
+        uses: actions/cache@v3.0.6
+        with:
+          path: |
+            ${{ env.FLUTTER_HOME }}/bin
+          key: install-flutter-3.0.4
+          restore-keys: |
+            install-flutter-
+      - name: Cache pubspec dependencies
+        uses: actions/cache@v3.0.6
+        with:
+          path: |
+            ${{ env.FLUTTER_HOME }}/.pub-cache
+            **/.packages
+            **/.flutter-plugins
+            **/.flutter-plugin-dependencies
+            **/.dart_tool/package_config.json
+          key: build-pubspec-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            build-pubspec-
+  analyze_and_test:
+    runs-on: ubuntu-latest
+    needs: setup
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Flutter 3.0.4
+        uses: subosito/flutter-action@v2.6.1
+        with:
+          # The Flutter version to make available on the path
+          flutter-version: 3.0.4
+      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      - name: Setup LCOV
+        uses: hrishikesh-kadam/setup-lcov@v1.0.0
+      
+      - name: Flutter Pub Get
+        run: flutter pub get
+        
+      - name: Flutter Analyze
+        run: flutter analzye
+        
+      - name: Flutter Tets
+        run: flutter test --coverage
+      - name: Generate coverage
+        run: lcov --remove coverage/lcov.info "lib/data/api/api_service.g.dart*" "lib/data/repository/crash/*" -o coverage/new_lcov.info && genhtml coverage/new_lcov.info --output=coverage
+
