@@ -6,10 +6,12 @@ import 'package:weather_app/config/environment_config.dart';
 @module
 abstract class DioModule {
   @singleton
-  Dio dio() => _baseDio()
+  Dio dio() => _baseDio();
+  Dio _baseDio() => Dio(_options(EnvironmentConfig.apiUrl))
     ..interceptors.add(PrettyDioLogger(requestBody: true, requestHeader: true));
+  BaseOptions _options(String baseUrl) => BaseOptions(baseUrl: baseUrl);
 }
 
-Dio _baseDio() => Dio(_options(EnvironmentConfig.apiUrl));
 
-BaseOptions _options(String baseUrl) => BaseOptions(baseUrl: baseUrl);
+
+
