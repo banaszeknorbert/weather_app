@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:weather_app/screen/home/home_screen.dart';
-import 'package:weather_app/screen/splash/splash_screen.dart';
+import 'package:weather_app/screen/home/view/home_screen.dart';
+import 'package:weather_app/screen/splash/view/splash_screen.dart';
 
 final GoRouter router = GoRouter(
   routes: <GoRoute>[

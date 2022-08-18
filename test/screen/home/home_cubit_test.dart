@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:weather_app/data/repository/crash/crash_repository.dart';
 import 'package:weather_app/data/repository/location/location_repository.dart';
 import 'package:weather_app/data/repository/weather/weather_repository.dart';
-import 'package:weather_app/screen/home/home_cubit.dart';
+import 'package:weather_app/screen/home/bloc/home_cubit.dart';
 
 import '../../mocks/model_mocks.dart';
 import 'home_cubit_test.mocks.dart';

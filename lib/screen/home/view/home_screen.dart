@@ -4,8 +4,8 @@ import 'package:weather_app/data/repository/crash/crash_repository.dart';
 import 'package:weather_app/data/repository/location/location_repository.dart';
 import 'package:weather_app/data/repository/weather/weather_repository.dart';
 import 'package:weather_app/injection/injection.dart';
-import 'package:weather_app/screen/home/home_cubit.dart';
-import 'package:weather_app/screen/home/home_screen_view.dart';
+import 'package:weather_app/screen/home/bloc/home_cubit.dart';
+import 'package:weather_app/screen/home/view/home_screen_view.dart';
 import 'package:weather_app/theme/gradients.dart';
 
 class HomeScreen extends StatefulWidget {
