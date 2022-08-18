@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:weather_app/injection/injection.dart';
-import 'package:weather_app/screen/home/home_screen_view.dart';
+import 'package:weather_app/screen/home/view/home_screen_view.dart';
 
 import '../../mocks/model_mocks.dart';
 
