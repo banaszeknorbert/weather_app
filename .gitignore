@@ -51,3 +51,4 @@ app.*.map.json
 /lib/**/*.freezed.dart
 /lib/**/*.g.dart
 /test/**/*.mocks.dart
+/coverage/**
