@@ -67,4 +67,6 @@ jobs:
         run: flutter test --coverage
       - name: Generate coverage
         run: lcov --remove coverage/lcov.info "lib/data/api/api_service.g.dart*" "lib/data/repository/crash/*" -o coverage/new_lcov.info && genhtml coverage/new_lcov.info --output=coverage
+        
+      - uses: codecov/codecov-action@v3
 
