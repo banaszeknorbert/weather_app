@@ -1,4 +1,5 @@
 # weather_app
+[![CI](https://github.com/banaszeknorbert/weather_app/actions/workflows/main.yml/badge.svg)](https://github.com/banaszeknorbert/weather_app/actions/workflows/main.yml) [![codecov](https://codecov.io/gh/banaszeknorbert/weather_app/branch/main/graph/badge.svg?token=HO6XUOPL2D)](https://codecov.io/gh/banaszeknorbert/weather_app)
 
 ## Getting Started
 
